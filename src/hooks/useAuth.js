@@ -38,7 +38,7 @@ export function useAuth() {
 
   const login = useCallback(async (email, password) => {
     try {
-      const res = await axiosInstance.post('/api/auth/login', { email, password });
+      const res = await axiosInstance.post('/api/auth/login', { "email": email, "password": password });
       if (!res.data?.accessToken) return false; // isSuccess=false 방어
       tokenStore.set(res.data);
       setLogin(true);
